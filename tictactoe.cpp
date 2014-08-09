@@ -1,13 +1,21 @@
+/* Purpose was to make it simple to understand.
+Rasmus C. :) very la.te.
+*/
+
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-bool checkrange(int number)
+bool checkrange(int x, int y) // Check if numbers are in range.
 {
-    if (number =<3)
+    if (y<=3 && y>=0 && x<=3 && x>=0)
+    {
+        return true;
+    }
+    cout << "Coordinate not in range." << endl;
+    return false;
 }
-
 // clear screen
 void cls()
 {
@@ -67,6 +75,8 @@ int printboard(string boardstate[][3])
     cout << "-------------------\n";
     cout << "|  " << boardstate[2][0] << "  |  " << boardstate[2][1] << "  |  " << boardstate[2][2] << "  |\n";
     cout << "-------------------\n";
+
+    return 0;
 }
 
 int main()
@@ -103,7 +113,7 @@ int main()
         }
     }
 
-    int i=0; // Our main game loop
+    int i=0; // Game loop
     while (i==0)
     {
 
@@ -111,9 +121,6 @@ int main()
 
         // Print the board with the data from boardstate
         printboard(boardstate);
-
-        // Checkifwin
-        //checkwin(boardstate);
 
         //Show the board
         if (checkwin(boardstate)== "X")
@@ -132,14 +139,24 @@ int main()
         //Check whose turn it is and get next strike
         if (turn==p1)
         {
+
             int x=0;
             int y=0;
+
+            int inrange=0;
+            while(inrange==false)
+            {
             cout << "It is your turn " << player1 << "\nPlease enter X coordinate: ";
             cin >> x;
             x--;
             cout << "Enter Y coordinate: ";
             cin >> y;
             y--;
+            if (checkrange(x,y)==true)
+                {
+                    inrange=1;
+                }
+            }
 
             // check if taken
             if (boardstate[x][y]!="Y")
@@ -152,13 +169,21 @@ int main()
         {
             int x=0;
             int y=0;
+
+            int inrange=0;
+            while(inrange==false)
+            {
             cout << "It is your turn " << player2 << "\nPlease enter X coordinate: ";
             cin >> x;
             x--; // arrays starts from 0
             cout << "Enter Y coordinate: ";
             cin >> y;
             y--; // arrays starts from 0
-
+            if (checkrange(x,y)==true)
+                {
+                    inrange=1;
+                }
+            }
 
             // check if taken
             if (boardstate[x][y]!="X")
