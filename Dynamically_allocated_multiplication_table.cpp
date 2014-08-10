@@ -1,3 +1,7 @@
+/*
+THIS IS A VERY STUPID WAY OF DOING THIS. I only did it to demonstrate an array of pointers, pointing to an array of pointers ( dynamicly allocationing 2 arrays ).
+*/
+
 #include <iostream>
 using namespace std;
 
