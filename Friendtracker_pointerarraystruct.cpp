@@ -98,6 +98,7 @@ int main()
                 cout << "\n";
                 cout << "ID: " << j;
                 cout << "\n\n";
+                cout << "Press any key to return to the menu.";
             }
             cin.ignore(256,'\n');
             cin.get();
